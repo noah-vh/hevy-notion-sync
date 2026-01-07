@@ -1,0 +1,20 @@
+{
+  "name": "hevy-notion-sync",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "convex dev",
+    "deploy": "convex deploy",
+    "sync": "convex run hevy:fullSync",
+    "sync:notion": "convex run notion:syncToNotion",
+    "status": "convex run sync:getStatus"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Sync Hevy workout data to Notion via Convex",
+  "dependencies": {
+    "@notionhq/client": "^5.6.0",
+    "convex": "^1.31.2"
+  }
+}
