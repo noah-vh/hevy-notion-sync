@@ -2,7 +2,7 @@
 
 A Convex-powered application that synchronizes workout data from the Hevy fitness app to Notion databases. This enables rich workout tracking, progress analysis, and program management within Notion's flexible workspace.
 
-## 🏋️ Features
+## Features
 
 ### Data Synchronization
 - **Workout Sync**: Automatically sync completed workouts from Hevy to Notion
@@ -11,7 +11,7 @@ A Convex-powered application that synchronizes workout data from the Hevy fitnes
 - **Progress Tracking**: Aggregate performance metrics and progression data
 
 ### Notion Organization
-- **Hierarchical Structure**: Week-based folders → Day-based routines → Exercise details
+- **Hierarchical Structure**: Week-based folders to Day-based routines to Exercise details
 - **Rich Data Types**: Proper Notion properties for weights, reps, dates, and progress
 - **Automatic Sorting**: Smart sorting by week, day, and exercise order
 - **Progress Analytics**: Built-in progress tracking and performance metrics
@@ -22,15 +22,35 @@ A Convex-powered application that synchronizes workout data from the Hevy fitnes
 - **Error Handling**: Robust error recovery and retry mechanisms
 - **Scalable Architecture**: Built on Convex for reliability and performance
 
-## 🚀 Deployment
+## Quick Start
 
-This application is deployed on Convex cloud:
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/noah-vh/hevy-notion-sync.git
+   cd hevy-notion-sync
+   ```
 
-- **Production URL**: https://marvelous-tern-924.convex.cloud
-- **Environment**: Production-ready with automatic scaling
-- **Status**: Active with real-time data synchronization
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## 📊 Data Schema
+3. **Set up Convex**
+   ```bash
+   npx convex dev --configure
+   ```
+
+4. **Configure environment**
+   - Copy `.env.local.example` to `.env.local`
+   - Add your Hevy API key and Notion credentials
+   - Update deployment URLs with your own
+
+5. **Deploy**
+   ```bash
+   npm run deploy
+   ```
+
+## Data Schema
 
 ### Core Tables
 - **workouts**: Completed workout sessions with metrics
@@ -45,7 +65,7 @@ This application is deployed on Convex cloud:
 - **exerciseTemplates**: Exercise database with muscle groups
 - **syncState**: Synchronization status and error tracking
 
-## 🔧 Setup & Configuration
+## Setup & Configuration
 
 ### Prerequisites
 - Hevy API access and API key
@@ -76,7 +96,7 @@ npm run sync:notion   # Sync to Notion
 npm run status        # Check sync status
 ```
 
-## 📈 Usage
+## Usage
 
 ### Automatic Sync
 The application automatically syncs data from Hevy:
@@ -103,7 +123,7 @@ Once configured, the app creates and maintains:
 - Exercise database with performance history
 - Progress tracking with charts and metrics
 
-## 🏗️ Architecture
+## Architecture
 
 ### Convex Functions
 - **hevy.ts**: Hevy API integration and data fetching
@@ -113,20 +133,12 @@ Once configured, the app creates and maintains:
 - **crons.ts**: Scheduled sync operations
 
 ### Data Flow
-1. **Hevy API** → Fetch workout and routine data
-2. **Convex Database** → Store and process data
-3. **Notion API** → Create and update Notion databases
-4. **Progress Analytics** → Generate insights and metrics
+1. **Hevy API** - Fetch workout and routine data
+2. **Convex Database** - Store and process data
+3. **Notion API** - Create and update Notion databases
+4. **Progress Analytics** - Generate insights and metrics
 
-## 🔄 Sync Status
-
-Current deployment status:
-- **Workouts**: 39 synced sessions
-- **Exercises**: 211 exercise instances
-- **Sets**: 641 individual sets tracked
-- **Last Sync**: 2026-01-07T06:19:39.800Z
-
-## 🛠️ Development
+## Development
 
 ### Local Development
 ```bash
@@ -152,7 +164,7 @@ convex/
 └── _generated/      # Generated types
 ```
 
-## 📝 API Reference
+## API Reference
 
 ### Key Functions
 - `hevy:fullSync` - Complete data synchronization from Hevy
@@ -160,13 +172,13 @@ convex/
 - `sync:getStatus` - Get current synchronization status
 - `sync:getProgress` - Get exercise progression data
 
-## 🔐 Security
+## Security
 
 - API keys stored securely in Convex environment
 - Rate limiting and error handling for external APIs
 - Secure authentication for all integrations
 
-## 📊 Monitoring
+## Monitoring
 
 The application includes comprehensive monitoring:
 - Sync status tracking
@@ -174,15 +186,15 @@ The application includes comprehensive monitoring:
 - Performance metrics
 - Data consistency checks
 
-## 🤝 Contributing
+## Contributing
 
-This is a production application managing real workout data. Contact the maintainer before making changes.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
-Private project - All rights reserved
+MIT License - see LICENSE file for details
 
-## 🔗 Related
+## Related
 
 - [Hevy MCP Server](https://github.com/noah-vh/hevy-mcp-server) - MCP integration for Hevy API
 - [Hevy API Documentation](https://api.hevyapp.com) - Official API reference
