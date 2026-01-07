@@ -1,0 +1,6 @@
+# Hevy-Notion Sync Configuration
+# Copy this to setup.config and fill in your API keys
+
+HEVY_API_KEY=your_hevy_api_key_here
+NOTION_API_KEY=your_notion_integration_key_here
+NOTION_DATABASE_ID=your_notion_database_id_here

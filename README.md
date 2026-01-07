@@ -24,7 +24,34 @@ A Convex-powered application that synchronizes workout data from the Hevy fitnes
 
 ## Quick Start
 
-1. **Clone this repository**
+Choose your preferred setup method:
+
+### Option 1: Automated Setup (Easiest)
+
+1. **Clone and configure**
+   ```bash
+   git clone https://github.com/noah-vh/hevy-notion-sync.git
+   cd hevy-notion-sync
+   cp setup.config.example setup.config
+   ```
+
+2. **Edit setup.config** with your API keys:
+   - HEVY_API_KEY
+   - NOTION_API_KEY
+   - NOTION_DATABASE_ID
+
+3. **Run automated setup**
+   ```bash
+   npm run setup:auto
+   ```
+
+The script handles everything automatically: installs dependencies, configures Convex, sets environment variables, and deploys.
+
+### Option 2: Manual CLI Setup
+
+If you prefer to run the commands yourself:
+
+1. **Clone the repository**
    ```bash
    git clone https://github.com/noah-vh/hevy-notion-sync.git
    cd hevy-notion-sync
@@ -35,19 +62,32 @@ A Convex-powered application that synchronizes workout data from the Hevy fitnes
    npm install
    ```
 
-3. **Set up Convex**
+3. **Set up environment file**
    ```bash
-   npx convex dev --configure
+   cp .env.local.example .env.local
    ```
 
-4. **Configure environment**
-   - Copy `.env.local.example` to `.env.local`
-   - Add your Hevy API key and Notion credentials
-   - Update deployment URLs with your own
-
-5. **Deploy**
+4. **Initialize Convex project**
    ```bash
-   npm run deploy
+   npx convex dev --once
+   ```
+   This creates a new Convex project and updates your .env.local
+
+5. **Set environment variables**
+   ```bash
+   npx convex env set HEVY_API_KEY "your_hevy_api_key"
+   npx convex env set NOTION_API_KEY "your_notion_key"
+   npx convex env set NOTION_DATABASE_ID "your_database_id"
+   ```
+
+6. **Deploy to production**
+   ```bash
+   npx convex deploy --yes
+   ```
+
+7. **Run your first sync**
+   ```bash
+   npm run sync
    ```
 
 ## Data Schema
@@ -65,21 +105,28 @@ A Convex-powered application that synchronizes workout data from the Hevy fitnes
 - **exerciseTemplates**: Exercise database with muscle groups
 - **syncState**: Synchronization status and error tracking
 
-## Setup & Configuration
+## Prerequisites
 
-### Prerequisites
-- Hevy API access and API key
-- Notion integration and database setup
-- Convex account and deployment
+Before setting up, you'll need:
 
-### Environment Variables
-Required environment variables for the Convex deployment:
+### 1. Hevy API Key
+- Get your API key from the Hevy app or website
+- Required for accessing workout data
 
-```bash
-HEVY_API_KEY=your_hevy_api_key
-NOTION_API_KEY=your_notion_integration_key
-NOTION_DATABASE_ID=your_notion_database_id
-```
+### 2. Notion Integration
+- Go to https://www.notion.so/my-integrations
+- Create a new integration
+- Copy the Internal Integration Token
+- Share your Notion database with the integration
+
+### 3. Notion Database ID
+- Create a database in Notion for workouts
+- Copy the database ID from the URL
+- Format: `https://notion.so/YOUR_WORKSPACE/DATABASE_ID?v=...`
+
+### 4. Convex Account (Free)
+- Sign up at https://convex.dev
+- The setup script will guide you through project creation
 
 ### Deployment Commands
 

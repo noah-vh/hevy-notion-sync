@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "setup": "./setup.sh",
+    "setup:quick": "./setup-quick.sh",
+    "setup:auto": "./setup-auto.sh",
     "dev": "convex dev",
     "deploy": "convex deploy",
     "sync": "convex run hevy:fullSync",
